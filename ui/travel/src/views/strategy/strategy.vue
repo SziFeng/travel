@@ -1,9 +1,11 @@
 <template>
-  <div class="home"></div>
+  <div>
+    攻略
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Home"
-};
+  name: 'strategy'
+}
 </script>
