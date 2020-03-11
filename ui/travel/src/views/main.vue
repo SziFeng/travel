@@ -1,13 +1,14 @@
 <template>
   <div>
-    <div style="margin-bottom:50px">
+    <!-- <div style="margin-bottom:50px"> -->
+    <div>
       <keep-alive>
         <transition :name="transitionName">
           <router-view></router-view>
         </transition>
       </keep-alive>
     </div>
-    <div>
+    <!-- <div>
       <van-tabbar v-model="active" @change="change">
         <van-tabbar-item
           :icon="item.icon"
@@ -15,11 +16,8 @@
           :key="index"
           >{{ item.name }}</van-tabbar-item
         >
-        <!-- <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-        <van-tabbar-item icon="records" dot>攻略</van-tabbar-item>
-        <van-tabbar-item icon="friends-o">我的</van-tabbar-item> -->
       </van-tabbar>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -46,7 +44,7 @@ export default {
   methods: {
     change (e) {
       console.log('sss', e)
-      this.$router.push({ name: this.myRouter[e] })
+      this.$router.push({ name: this.myRouter[e].path })
     }
   },
   mounted () {}
