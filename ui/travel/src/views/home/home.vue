@@ -1,15 +1,15 @@
 <template>
   <div class="home" style="width:100%">
     <van-swipe
-      style="height: 200px;background-color:skyblue"
+      style="height: 235px;background-color:skyblue"
       :autoplay="3000"
       :show-indicators="false"
       vertical
      >
-      <van-swipe-item>1</van-swipe-item>
-      <van-swipe-item>2</van-swipe-item>
-      <van-swipe-item>3</van-swipe-item>
-      <van-swipe-item>4</van-swipe-item>
+      <van-swipe-item><img src="@/assets/image/img1.png" alt=""></van-swipe-item>
+      <van-swipe-item><img src="@/assets/image/img2.png" alt=""></van-swipe-item>
+      <van-swipe-item><img src="@/assets/image/img3.png" alt=""></van-swipe-item>
+      <van-swipe-item><img src="@/assets/image/img4.png" alt=""></van-swipe-item>
     </van-swipe>
     <div class="nav">
       <van-grid column-num="3">
@@ -56,11 +56,11 @@ export default {
       activeNames: [''],
       navData: [
         { text: '攻略', icon: 'icon-youjigonglve-yanse', path: 'strategy' },
-        { text: '当地', icon: 'icon-bendihua', path: '' },
-        { text: '目的地', icon: 'icon-mudedi', path: '' },
-        { text: '游记', icon: 'icon-hua', path: '' },
         { text: '推荐', icon: 'icon-dianzanjiaohu', path: '' },
-        { text: '个人', icon: 'icon-dongtai-jiaohuqian', path: 'user' }
+        { text: '个人', icon: 'icon-dongtai-jiaohuqian', path: 'user' },
+        { text: '游记', icon: 'icon-hua', path: '' },
+        { text: '当地', icon: 'icon-bendihua', path: '' },
+        { text: '目的地', icon: 'icon-mudedi', path: '' }
       ]
     }
   },

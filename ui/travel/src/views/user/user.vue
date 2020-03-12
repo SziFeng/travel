@@ -13,7 +13,7 @@
         <span class="mytext qian">签到</span>
       </div>
     </div>
-    <div>
+    <div style="padding:10px 0">
       <van-grid gutter="10" column-num="3" border="flase">
         <van-grid-item  v-for="(item,index) in gridData" :key="index">
           <div>
