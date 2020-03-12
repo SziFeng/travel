@@ -1,15 +1,5 @@
 <template>
   <div class="home" style="width:100%">
-    <div>
-      <van-search show-action placeholder="请输入搜索关键词">
-        <div slot="left">
-          <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-icon9"></use>
-          </svg>
-        </div>
-        <div slot="action" @click="onSearch()">登录</div>
-      </van-search>
-    </div>
     <van-swipe
       style="height: 200px;background-color:skyblue"
       :autoplay="3000"
@@ -23,7 +13,14 @@
     </van-swipe>
     <div class="nav">
       <van-grid column-num="3">
-        <van-grid-item :icon="item.icon" :text="item.text" v-for="(item,index) in navData" :key="index" @click="goTo(item.path)"/>
+        <van-grid-item v-for="(item,index) in navData" :key="index" @click="goTo(item.path)">
+          <div>
+            <svg class="icon" aria-hidden="true" style="font-size:34px">
+                <use :xlink:href="'#'+item.icon"></use>
+            </svg>
+          </div>
+          <div style="color:#2ca9b0">{{item.text}}</div>
+        </van-grid-item>
       </van-grid>
     </div>
     <div class="botContent">
@@ -58,12 +55,12 @@ export default {
     return {
       activeNames: [''],
       navData: [
-        { text: '攻略', icon: 'eye-o', path: 'strategy' },
-        { text: '当地', icon: 'location-o', path: '' },
-        { text: '目的地', icon: 'upgrade', path: '' },
-        { text: '游记', icon: 'flower-o', path: '' },
-        { text: '推荐', icon: 'good-job-o', path: '' },
-        { text: '个人', icon: 'exchange', path: 'user' }
+        { text: '攻略', icon: 'icon-youjigonglve-yanse', path: 'strategy' },
+        { text: '当地', icon: 'icon-bendihua', path: '' },
+        { text: '目的地', icon: 'icon-mudedi', path: '' },
+        { text: '游记', icon: 'icon-hua', path: '' },
+        { text: '推荐', icon: 'icon-dianzanjiaohu', path: '' },
+        { text: '个人', icon: 'icon-dongtai-jiaohuqian', path: 'user' }
       ]
     }
   },
@@ -76,7 +73,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .conTitle{
   padding: 10px;
   .Tline{

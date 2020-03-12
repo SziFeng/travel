@@ -6,6 +6,7 @@ import store from './store'
 import 'amfe-flexible'
 import Vant from 'vant'
 import 'vant/lib/index.css'
+import '@/assets/main.css'
 
 Vue.use(Vant)
 

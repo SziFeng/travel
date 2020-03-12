@@ -13,19 +13,4 @@
   font-size: 16px;
   overflow: hidden;
 }
-.myflex1{
-  display: flex;
-  align-items: center;
-}
-.myflex2{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.icon {
-       width: 1em; height: 1em;
-       vertical-align: -0.15em;
-       fill: currentColor;
-       overflow: hidden;
-    }
 </style>

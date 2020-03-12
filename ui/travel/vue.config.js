@@ -1,10 +1,10 @@
-const autoprefixer = require("autoprefixer");
-const pxtorem = require("postcss-pxtorem");
-const pxtoviewport = require("postcss-px-to-viewport");
+const autoprefixer = require('autoprefixer')
+const pxtorem = require('postcss-pxtorem')
+const pxtoviewport = require('postcss-px-to-viewport')
 
 module.exports = {
-  outputDir: "dist",
-  publicPath: process.env.NODE_ENV === "production" ? "/vant-demo/" : "/",
+  outputDir: 'dist',
+  publicPath: process.env.NODE_ENV === 'production' ? '/vant-demo/' : '/',
   css: {
     loaderOptions: {
       postcss: {
@@ -12,7 +12,7 @@ module.exports = {
           autoprefixer(),
           pxtorem({
             rootValue: 37.5,
-            propList: ["*"]
+            propList: ['*']
           }),
           pxtoviewport({
             viewportWidth: 375
@@ -21,4 +21,4 @@ module.exports = {
       }
     }
   }
-};
+}

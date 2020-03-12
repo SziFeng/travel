@@ -2,6 +2,16 @@
   <div>
     <!-- <div style="margin-bottom:50px"> -->
     <div>
+      <van-search show-action  placeholder="请输入搜索关键词" background="#2ca9b0">
+        <div slot="left-icon">
+          <svg class="icon" aria-hidden="true" style="font-size:20px">
+              <use xlink:href="#icon-shouye"></use>
+          </svg>
+        </div>
+        <div slot="action" @click="onSearch()">登录</div>
+      </van-search>
+    </div>
+    <div>
       <keep-alive>
         <transition :name="transitionName">
           <router-view></router-view>
@@ -45,6 +55,9 @@ export default {
     change (e) {
       console.log('sss', e)
       this.$router.push({ name: this.myRouter[e].path })
+    },
+    onSearch () {
+      this.$router.go(-1)
     }
   },
   mounted () {}
