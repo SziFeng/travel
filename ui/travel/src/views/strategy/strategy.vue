@@ -9,8 +9,8 @@
         <div class="name" style="border-top:1px #ccc solid">
           <van-tabs animated>
             <van-tab title="国内">
-              <div style="display:flex">
-                <div v-for="(item,index) in 2" :key="index" >
+              <div style="display:grid;grid-template-columns: repeat(2, 50%);">
+                <div v-for="(item,index) in list" :key="index" >
                   <div style="padding:7px 7px 3px;flex:1">
                     <img src="@/assets/image/img1.png" alt=""  width="100%">
                   </div>
@@ -27,7 +27,7 @@
           </van-tabs>
         </div>
         <div style="padding:20px 80px;text-align:center">
-          <div style="border:1px solid skyblue;padding:10px 0">加载更多</div>
+          <div style="border:1px solid skyblue;padding:10px 0" @click="more">加载更多</div>
         </div>
       </div>
     </div>
@@ -36,6 +36,16 @@
 
 <script scoped>
 export default {
-  name: 'strategy'
+  name: 'strategy',
+  data () {
+    return {
+      list: 3
+    }
+  },
+  methods: {
+    more () {
+      this.list += 3
+    }
+  }
 }
 </script>
