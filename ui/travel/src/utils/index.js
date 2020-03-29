@@ -4,25 +4,12 @@ import QS from 'qs'
 // import myStore from '@/store/index'
 const fetch = {}
 axios.defaults.withCredentials = true
-let pending = []
-let removePending = (config) => {
-  for (let p in pending) {
-    if (pending[p].u === config.url) {
-      pending[p].f()
-      pending.splice(p, 1)
-    }
-  }
-}
 // http request(请求拦截)
 axios.interceptors.request.use(
   config => {
     // console.log('请求拦截', config)
     // 设置vuex属性加载中
     // myStore.commit('tab/setSearchState', false)
-    removePending(config)
-    config.cancelToken = new axios.CancelToken((c) => {
-      pending.push({ u: config.url, f: c })
-    })
     return config
   },
   error => {
@@ -46,7 +33,7 @@ fetch.install = (Vue, options) => {
   console.log(host)
   // axios.defaults.baseURL = host
   // post请求(From Data)
-  Vue.$post_from = (url, params) => {
+  Vue.$post = (url, params) => {
     return new Promise((resolve, reject) => {
       axios.post(url, QS.stringify(params), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
         .then(response => {
@@ -56,20 +43,8 @@ fetch.install = (Vue, options) => {
         })
     })
   }
-  // post请求(Request Payload)
-  Vue.$my_post = (url, params) => {
-    return new Promise((resolve, reject) => {
-      axios.post(url, params)
-        .then(response => {
-          resolve(response.data)
-        })
-        .catch(err => {
-          reject(err)
-        })
-    })
-  }
   // get请求(Request Payload)
-  Vue.$my_get = (url, params = {}) => {
+  Vue.$get = (url, params = {}) => {
     return new Promise((resolve, reject) => {
       axios.get(url, {
         params: params
@@ -83,7 +58,7 @@ fetch.install = (Vue, options) => {
     })
   }
   // put请求(Request Payload)
-  Vue.$my_put = (url, params) => {
+  Vue.$put = (url, params) => {
     return new Promise((resolve, reject) => {
       axios.put(url, params)
         .then(response => {
@@ -95,7 +70,7 @@ fetch.install = (Vue, options) => {
     })
   }
   // delete请求(From Data)
-  Vue.$delete_from = (url, params) => {
+  Vue.$delete = (url, params) => {
     return new Promise((resolve, reject) => {
       axios.delete(url, QS.stringify(params), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
         .then(response => {
