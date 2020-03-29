@@ -57,7 +57,8 @@ export default {
       this.$router.push({ name: this.myRouter[e].path })
     },
     onSearch () {
-      this.$router.go(-1)
+      // this.$router.go(-1)
+      this.$router.push({ name: 'login' })
     }
   },
   mounted () {}
