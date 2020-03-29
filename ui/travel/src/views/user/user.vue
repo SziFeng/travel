@@ -14,7 +14,7 @@
       </div>
     </div>
     <div style="padding:10px 0">
-      <van-grid gutter="10" column-num="3" border="flase">
+      <van-grid gutter="10" column-num="3" >
         <van-grid-item  v-for="(item,index) in gridData" :key="index">
           <div>
             <svg class="icon" aria-hidden="true" style="font-size:34px">
