@@ -4,33 +4,32 @@
       <div style="padding:5px 10px"><img src="../../assets/image/boy.png" alt="" width="85px" height="85px"></div>
       <div class="userInfo" style="padding-top:10px">
         <span class="mytext">不再飞的鱼</span>
-        <span class="mytext range">LV5</span>
+        <van-tag type="primary" size="medium">LV5</van-tag>
         <span class="mytext">
           <svg class="icon icon-nan" aria-hidden="true">
               <use xlink:href="#icon-nan"></use>
           </svg>
         </span>
         <span class="mytext qian">签到</span>
+        <div class="desc">添加个人描述，可以让大家更好的认识你</div>
       </div>
     </div>
-    <div style="padding:10px 0">
-      <van-grid gutter="10" column-num="3" >
-        <van-grid-item  v-for="(item,index) in gridData" :key="index">
-          <div>
-            <svg class="icon" aria-hidden="true" style="font-size:34px">
-                <use :xlink:href="'#'+item.icon"></use>
-            </svg>
-          </div>
-          <div style="color:#2ca9b0">{{item.name}}</div>
-        </van-grid-item>
-      </van-grid>
+    <div class="activity">
+      <div v-for="(item,index) in activeList" :key="index">
+        <div class="num">{{item.num}}</div>
+        <div class="name">{{item.name}}</div>
+      </div>
     </div>
     <div>
       <van-tabs animated>
-        <van-tab title="历史">内容 1</van-tab>
+        <van-tab title="草稿">内容 草稿</van-tab>
+        <van-tab title="笔记">内容 笔记</van-tab>
+      </van-tabs>
+      <van-tabs animated>
         <van-tab title="收藏">内容 2</van-tab>
-        <van-tab title="订阅">内容 3</van-tab>
-        <van-tab title="关注">内容 4</van-tab>
+        <van-tab title="标签">内容 3</van-tab>
+        <van-tab title="专辑">内容 4</van-tab>
+        <van-tab title="赞过">内容 赞过</van-tab>
       </van-tabs>
     </div>
   </div>
@@ -41,12 +40,10 @@ export default {
   name: 'user',
   data () {
     return {
-      gridData: [
-        { name: '足迹', icon: 'icon-techreport', path: '' },
-        { name: '评论', icon: 'icon-huifupingluns', path: '' },
-        { name: '参与', icon: 'icon-gerencanshu', path: '' },
-        { name: '消息', icon: 'icon-icon_A', path: '' },
-        { name: '设置', icon: 'icon-shezhi', path: '' }
+      activeList: [
+        { name: '我的粉丝', num: '15' },
+        { name: '关注', num: '6' },
+        { name: '获赞与收藏', num: '7' }
       ]
     }
   }
@@ -73,4 +70,27 @@ export default {
   font-size: 22px;
   border-radius: 5px;
 }
+.activity{
+  padding: 15px 50px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  display: flex;
+  justify-content: space-between;
+}
+.activity .num{
+  font-size: 28px;
+  text-align: center;
+}
+.activity .name{
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #666666;
+}
+.desc{
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666666;
+}
+
 </style>
