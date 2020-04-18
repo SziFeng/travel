@@ -10,31 +10,45 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'main',
-    redirect: '/home',
-    component: () => import('../views/main'),
+    name: 'index',
+    redirect: '/login',
+    component: () => import('../views/index'),
     children: [
       {
         path: '/home',
         name: 'home',
-        component: () => import('../views/home/home')
+        meta: { index: 0 },
+        component: () => import('@/views/index/home')
       },
       {
-        path: '/strategy',
-        name: 'strategy',
-        component: () => import('../views/strategy/strategy')
+        path: '/destination',
+        name: 'destination',
+        meta: { index: 1 },
+        component: () => import('@/views/index/destination')
       },
       {
-        path: '/user',
-        name: 'user',
-        component: () => import('../views/user/user')
+        path: '/person',
+        name: 'person',
+        meta: { index: 2 },
+        component: () => import('@/views/index/person')
+      },
+      {
+        path: '/notes',
+        name: 'notes',
+        meta: { index: 3 },
+        component: () => import('@/views/index/notes')
       }
     ]
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/login.vue')
+    component: () => import('../views/login')
+  },
+  {
+    path: '/regist',
+    name: 'regist',
+    component: () => import('../views/regist')
   }
 ]
 

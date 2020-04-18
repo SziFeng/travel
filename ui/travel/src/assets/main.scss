@@ -1,0 +1,121 @@
+body{
+  margin: 0;
+}
+.myflex1{
+  display: flex;
+  align-items: center;
+}
+.myflex2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myflex3{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.myflex4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+    width: 1.5em; 
+    height: 1.5em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+/* 按钮的样式 */
+.f-button button{
+  margin: auto;
+  width: 100%;
+  padding: 9px 16px;
+  background-color: skyblue;
+  border: 0;
+  color: #ffffff;
+  font-size: 16px;
+}
+.f-button button:focus{
+  border: none !important;
+  outline: none !important;
+}
+/* 顶部nav */
+.f-top{
+  height: 45px;
+  padding: 0 20px;
+  line-height: 45px;
+  .center{
+    font-size: 22px;
+    font-weight: bold;
+  }
+}
+/* 底部bar */
+.f-bar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 55px;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px #f7f7f7;
+}
+/* 按钮 */
+.f-input{
+  padding: 10px;
+  border-radius: 3px;
+  .icon-item{
+    flex: 3;
+    text-align: center;
+  }
+  .input-item{
+    flex: 20;
+  }
+}
+.f-input {
+  .input-item {
+    input{
+      border: 0;
+      width: 98%;
+      font-size: 16px;
+      line-height: 1.8;
+      border-radius: 5px;
+      padding: 0 1%;
+    }
+    input:focus{
+      border: none !important;
+      outline: none !important;
+      background-color: #fff !important;
+    }
+  }
+}
+input:-internal-autofill-selected {
+  background-color: #e6e6e6 !important;
+}
+
+/* 过场切换动画 */
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 500ms;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
