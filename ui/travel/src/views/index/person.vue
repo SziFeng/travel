@@ -1,26 +1,48 @@
 <template>
   <div>
-    <f-bar backgroundColor="#eeeeee" :right="true"></f-bar>
+    <f-bar :left="false" :right="true"></f-bar>
     <div class="person-cont">
-      <div class="img-cont">
-        <img src="@/assets/image/1.jpg">
-      </div>
-      <div class="name">Mr.小糕</div>
-      <div class="detail">不曾到过的地方，有无限的向往</div>
-      <div class="info myflex2">
-        <div>
-          <div>23</div>
-          <div>粉丝</div>
+      <div v-if="loginStatus">
+        <div class="img-cont">
+          <img src="@/assets/image/1.jpg">
         </div>
-        <div>
-          <div>23</div>
-          <div>我的游记</div>
+        <div class="name">Mr.小糕</div>
+        <div class="detail">不曾到过的地方，有无限的向往</div>
+        <div class="info myflex2">
+          <div>
+            <div>23</div>
+            <div>粉丝</div>
+          </div>
+          <div>
+            <div>23</div>
+            <div>我的游记</div>
+          </div>
+          <div>
+            <div>450</div>
+            <div>关注</div>
+          </div>
         </div>
-        <div>
-          <div>450</div>
-          <div>关注</div>
+     </div>
+      <div v-else>
+        <div class="img-cont">
+          <img src="@/assets/image/boy.png">
         </div>
-      </div>
+        <div class="name2">登录/注册</div>
+        <div class="info myflex2">
+          <div>
+            <div>0</div>
+            <div>粉丝</div>
+          </div>
+          <div>
+            <div>0</div>
+            <div>我的游记</div>
+          </div>
+          <div>
+            <div>0</div>
+            <div>关注</div>
+          </div>
+        </div>
+     </div>
       <div class="button"><f-button text="我的订单" width="40%" radius="100"></f-button></div>
     </div>
     <f-list :icon="item.icon" :name="item.name" :to="item.path" v-for="(item,index) in list" :key="index" class="list"></f-list>
@@ -36,16 +58,17 @@ export default {
         { name: '我的足迹', icon: 'icon-zuji', path: '' },
         { name: '联系我们', icon: 'icon-tel', path: '' },
         { name: '设置', icon: 'icon-shezhi1', path: '' }
-      ]
+      ],
+      loginStatus: true
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .person-cont{
   margin-bottom: 30px;
-  background-color: #eeeeee;
+  background-image: repeating-linear-gradient(to bottom,skyblue,#f2f2f2);
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
   .img-cont{
@@ -63,7 +86,12 @@ export default {
   .name{
     font-size: 18px;
     font-weight: bold;
-    color: #666666;
+    padding: 5px;
+    text-align: center;
+  }
+  .name2{
+    font-size: 24px;
+    font-weight: bold;
     padding: 5px;
     text-align: center;
   }

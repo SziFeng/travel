@@ -1,5 +1,5 @@
 <template>
-    <div class="f-input myflex1" :style="{backgroundColor:backgroundColor}">
+    <div class="myflex1" :class="[size==='small'?'f-input-small':'f-input']" :style="{backgroundColor:backgroundColor,borderRadius:radius+'px'}">
         <div class="icon-item" v-if="showIcon">
             <!--
                 user-----用户
@@ -14,7 +14,7 @@
         </div>
         <div class="input-item">
           <input
-            :style="{backgroundColor:backgroundColor}"
+            :style="{backgroundColor:backgroundColor,borderRadius:radius+'px'}"
             :type="type==='lock'?'password':'text'"
             :placeholder="placeholder"
             :value="currentValue"
@@ -46,6 +46,14 @@ export default {
     backgroundColor: {
       default: '#e6e6e6',
       type: String
+    },
+    size: {
+      default: '',
+      type: String
+    },
+    radius: {
+      default: '',
+      type: String || Number
     },
     value: String || Number
   },

@@ -6,7 +6,7 @@
                 <use :xlink:href="'#'+icon"></use>
             </svg>
           </div>
-          <div style="font-size:18px;color:#666666;lineHeight:1.8;padding-left:15px">{{name}}</div>
+          <div class="list-name">{{name}}</div>
       </div>
       <div>
         <svg class="icon" aria-hidden="true">
@@ -33,3 +33,10 @@ export default {
   }
 }
 </script>
+<style>
+.list-name{
+  font-size:18px;
+  line-height:1.8;
+  padding-left:15px
+}
+</style>

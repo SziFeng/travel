@@ -1,6 +1,6 @@
 <template>
    <div style="margin:0 auto" :style="{width:width}" >
-      <div class="f-button" >
+      <div :class="{'f-button':size==='large','f-button-small':size==='small'}" >
         <button :style="{'borderRadius':radius+'px',backgroundColor:backgroundColor,color:color}" @click="$emit('click')">{{text}}</button>
       </div>
     </div>
@@ -28,6 +28,10 @@ export default {
     },
     color: {
       default: '',
+      type: String
+    },
+    size: {
+      default: 'large',
       type: String
     }
   },

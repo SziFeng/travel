@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view />
+      <transition name="slide-right" >
+        <router-view></router-view>
+      </transition>
   </div>
 </template>
 
@@ -12,5 +14,6 @@
   color: #000000;
   font-size: 16px;
   overflow: hidden;
+  width: 100%;
 }
 </style>

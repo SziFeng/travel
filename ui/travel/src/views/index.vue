@@ -1,10 +1,12 @@
 <template>
  <div>
-    <transition :name="transitionName">
-      <router-view></router-view>
-    </transition>
+    <div class="item-content">
+      <transition :name="transitionName" >
+        <router-view></router-view>
+      </transition>
+    </div>
     <div>
-      <f-tab></f-tab>
+      <f-tab :list="list"></f-tab>
     </div>
  </div>
 </template>
@@ -14,7 +16,13 @@ export default {
   name: 'index',
   data () {
     return {
-      transitionName: 'slide-left'
+      transitionName: 'slide-left',
+      list: [
+        { name: '首页', icon: '#icon-shouye-2', sicon: '#icon-shouye', path: 'home', center: false },
+        { name: '目的地', icon: '#icon-b2', sicon: '#icon-bendihua', path: 'destination', center: false },
+        { name: '消息', icon: '#icon-huifupingluns-2', sicon: '#icon-huifupingluns', path: 'notes', center: false },
+        { name: '我的', icon: '#icon-gerencanshu-2', sicon: '#icon-gerencanshu', path: 'person', center: false }
+      ]
     }
   },
   watch: {
@@ -33,6 +41,13 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style >
+.item-content{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 55px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
 </style>

@@ -20,6 +20,18 @@ body{
   justify-content: center;
   align-items: center;
 }
+.mygrid2{
+  display: grid;
+  grid-template-columns: repeat(2,50%);
+}
+.mygrid3{
+  display: grid;
+  grid-template-columns: repeat(3,33.3%);
+}
+.mygrid4{
+  display: grid;
+  grid-template-columns: repeat(4,25%);
+}
 .icon {
     width: 1.5em; 
     height: 1.5em;
@@ -42,6 +54,21 @@ body{
   border: none !important;
   outline: none !important;
 }
+.f-button-small{
+  button{
+    margin: auto;
+    width: 100%;
+    padding: 3px 10px;
+    background-color: skyblue;
+    border: 0;
+    color: #ffffff;
+    font-size: 12px;
+  }
+  button:focus{
+    border: none !important;
+    outline: none !important;
+  }
+}
 /* 顶部nav */
 .f-top{
   height: 45px;
@@ -63,7 +90,7 @@ body{
   box-shadow: 0 0 5px #f7f7f7;
 }
 /* 按钮 */
-.f-input{
+.f-input {
   padding: 10px;
   border-radius: 3px;
   .icon-item{
@@ -72,10 +99,6 @@ body{
   }
   .input-item{
     flex: 20;
-  }
-}
-.f-input {
-  .input-item {
     input{
       border: 0;
       width: 98%;
@@ -94,14 +117,62 @@ body{
 input:-internal-autofill-selected {
   background-color: #e6e6e6 !important;
 }
+/* 小按钮 */
+.f-input-small {
+  padding: 5px;
+  border-radius: 3px;
+  .icon-item{
+    flex: 3;
+    text-align: center;
+  }
+  .input-item{
+    flex: 20;
+    input{
+      border: 0;
+      width: 98%;
+      font-size: 16px;
+      line-height: 1.5;
+      border-radius: 5px;
+      padding: 0 1%;
+    }
+    input:focus{
+      border: none !important;
+      outline: none !important;
+      background-color: #fff !important;
+    }
+  }
+}
+
+.swipe-tab{
+  overflow: hidden;
+  display: flex;
+  white-space:nowrap;
+  overflow-x: scroll;
+  .item{
+    font-size: 20px;
+    margin: 5px;
+    padding: 5px 5px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    color: #999999;
+    text-align: center;
+  }
+  .select{
+    font-weight: bold;
+    color: skyblue;
+    border-bottom: 3px solid skyblue;
+  }
+}
 
 /* 过场切换动画 */
 .slide-right-enter-active,
 .slide-right-leave-active,
 .slide-left-enter-active,
 .slide-left-leave-active {
-  will-change: transform;
-  transition: all 500ms;
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  width: 100%;
 }
 .slide-right-enter {
   opacity: 0;

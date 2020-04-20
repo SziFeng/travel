@@ -18,12 +18,7 @@ export default {
     list: {
       type: Array,
       default: () => {
-        return [
-          { name: '首页', icon: '#icon-shouye-2', sicon: '#icon-shouye', path: 'home', center: false },
-          { name: '目的地', icon: '#icon-b2', sicon: '#icon-bendihua', path: 'destination', center: false },
-          { name: '消息', icon: '#icon-huifupingluns-2', sicon: '#icon-huifupingluns', path: 'notes', center: false },
-          { name: '我的', icon: '#icon-gerencanshu-2', sicon: '#icon-gerencanshu', path: 'person', center: false }
-        ]
+        return []
       }
     }
   },

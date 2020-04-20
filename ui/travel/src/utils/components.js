@@ -5,4 +5,5 @@ export default (Vue) => {
   Vue.component('fInput', () => import('@/components/flied'))
   Vue.component('fBar', () => import('@/components/top'))
   Vue.component('fList', () => import('@/components/list'))
+  Vue.component('fSwipe', () => import('@/components/swipe'))
 }

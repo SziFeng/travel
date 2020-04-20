@@ -48,7 +48,6 @@ export default {
   methods: {
     login () {
       this.$api.login({ username: this.username, password: this.password }).then(res => {
-        console.log('sss', res)
         if (res.data) {
           this.$router.push({ name: 'home' })
         }
