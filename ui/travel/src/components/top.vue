@@ -33,7 +33,7 @@ export default {
       type: String
     },
     backgroundColor: {
-      default: 'skyblue',
+      default: '#1296db',
       type: String
     },
     color: {

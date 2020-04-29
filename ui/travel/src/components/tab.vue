@@ -6,7 +6,7 @@
           <use :xlink:href="type===index?item.sicon:item.icon"></use>
         </svg>
       </div>
-      <div :style="{color:type===index?'#1296db':'#000000'}">{{item.name}}</div>
+      <div class="name" :style="{color:type===index?'#1296db':'#000000'}">{{item.name}}</div>
     </div>
   </div>
 </template>
@@ -33,6 +33,9 @@ export default {
       this.$router.push({ name: data.path })
       this.$emit('change', index)
     }
+  },
+  mounted () {
+    this.type = this.list.findIndex(res => res.path === this.$route.name)
   }
 }
 </script>

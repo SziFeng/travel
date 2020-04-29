@@ -1,15 +1,13 @@
 <template>
   <div>
-      <div class="swipe">
-        <div class="swipe-item"
-          :style="{transform:'translateX('+width+'px)',transition:time+'s'}"
-          v-tap="vueTap"
-          v-swipeleft="vueTouchLeft"
-          v-swiperight="vueTouchRight"
-        >
-          <div v-for="(item,index) in imgList" :key="index"><img :src="item.img" alt=""></div>
+    <van-swipe class="swipe-item" @change="(index)=>{count=index}" :autoplay="autoplay?'5000':''">
+      <van-swipe-item v-for="(item,index) in list" :key="index"><img :src="item.img" alt=""></van-swipe-item>
+      <template #indicator v-if="point">
+        <div class="custom-indicator">
+          {{ count + 1 }}/4
         </div>
-      </div>
+      </template>
+    </van-swipe>
   </div>
 </template>
 
@@ -30,84 +28,20 @@ export default {
       type: Number
     },
     point: {
-      default: true,
+      default: false,
       type: Boolean
     }
   },
   data () {
     return {
-      width: 0,
-      boxWidth: 0,
-      timer: null,
-      transitionName: 'all',
-      time: 1,
-      imgList: []
+      count: 0
     }
-  },
-  methods: {
-    vueTap () {
-      console.log('sss')
-    },
-    vueTouchRight () {
-      // console.log('右滑')
-      if (this.width === 0) {
-        // this.time = 0
-        this.width = -(this.imgList.length - 2) * this.boxWidth
-      }
-      setTimeout(() => {
-        this.time = 1
-        this.width = this.width + this.boxWidth
-      }, 50)
-    },
-    vueTouchLeft () {
-      // console.log('左滑')
-      if (this.width === -(this.imgList.length - 1) * this.boxWidth) {
-        this.time = 0
-        this.width = -this.boxWidth
-      }
-      setTimeout(() => {
-        this.time = 1
-        this.width = this.width - this.boxWidth
-      }, 100)
-    },
-    autoPlay () {
-      if (this.autoplay) {
-        this.timer = setInterval(() => {
-          this.vueTouchLeft()
-        }, this.second)
-      }
-    },
-    getImgList () {
-      let one = this.list[0]
-      let last = this.list[this.list.length - 1]
-      this.imgList = this.list
-      this.imgList.push(one)
-      this.imgList.unshift(last)
-    }
-  },
-  mounted () {
-    let obj = document.getElementsByClassName('swipe')
-    this.boxWidth = obj[0].clientWidth
-    this.width = -obj[0].clientWidth
-    console.log('sss', obj, this.boxWidth)
-    this.autoPlay()
-    this.getImgList()
-  },
-  destroyed () {
-    clearInterval(this.timer)
   }
 }
 </script>
 
 <style lang="scss">
-.swipe{
   .swipe-item{
-    // transition: 1s;
-    white-space: nowrap;
-    div{
-      display: inline-block;
-      position: relative;
-      width: 375px;
       height: 180px;
       img{
         border-radius: 15px;
@@ -116,7 +50,11 @@ export default {
         height: 100%;
         transform: scale(0.95);
       }
-    }
+      .custom-indicator{
+        position: absolute;
+        right: 20px;
+        bottom: 10px;
+        color: #FFF;
+      }
   }
-}
 </style>

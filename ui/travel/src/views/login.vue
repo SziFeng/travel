@@ -69,7 +69,7 @@ export default {
   width: 75px;
   height: 75px;
   /* overflow: hidden; */
-  background-color: skyblue;
+  background-color: #1296db;
   margin:20% auto 15px;
   border-radius: 10px;
   box-shadow: 0px 5px 10px #c4c4c4;

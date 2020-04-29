@@ -21,10 +21,9 @@ const routes = [
         component: () => import('@/views/index/home')
       },
       {
-        path: '/destination',
-        name: 'destination',
-        meta: { index: 1 },
-        component: () => import('@/views/index/destination')
+        path: '/diary',
+        name: 'diary',
+        component: () => import('../views/index/page/diary')
       },
       {
         path: '/person',
@@ -51,11 +50,6 @@ const routes = [
     component: () => import('../views/regist')
   },
   {
-    path: '/diary',
-    name: 'diary',
-    component: () => import('../views/index/page/diary')
-  },
-  {
     path: '/others',
     name: 'others',
     component: () => import('../views/index/page/others')
@@ -74,6 +68,12 @@ const routes = [
     path: '/sightsInfo',
     name: 'sightsInfo',
     component: () => import('../views/index/page/sightsInfo')
+  },
+  {
+    path: '/destination',
+    name: 'destination',
+    meta: { index: 1 },
+    component: () => import('@/views/index/destination')
   },
   {
     path: '/write',

@@ -1,19 +1,17 @@
 <template>
   <div class="destination">
-    <div class="myflex2 select-item">
-      <div class="myflex3">
-        <span class="name1">选择目的地</span>
-        <div class=" myflex1">
-          <svg class="icon" aria-hidden="true"><use xlink:href="#icon-location2"></use></svg>
-        </div>
-      </div>
-      <div><svg class="icon" aria-hidden="true"><use xlink:href="#icon-x"></use></svg></div>
-    </div>
-    <div style="padding:0 10px">
-      <div class="swipe-tab ">
-        <div class="item" :class="[type===item.id?'select':'']" v-for="item in nameList" :key="item.id" @click="type=item.id">{{item.name}}</div>
-      </div>
-    </div>
+    <van-nav-bar @click-left="$router.go(-1)" title="选择目的地" >
+      <template #left>
+        <van-icon name="arrow-left" size="0.6rem" color="#1296db"/>
+      </template>
+      <template #right>
+        <van-icon name="search" size="0.6rem" color="#1296db"/>
+      </template>
+    </van-nav-bar>
+    <van-tabs animated color="#1296db" sticky title-active-color="#1296db">
+      <van-tab v-for="(item,index) in nameList" :key="index" :title="item.name" >
+      </van-tab>
+    </van-tabs>
     <div class="j-container ">
       <div class="mygrid2">
         <div class="j-item" v-for="item in dataList" :key="item.id" @click="$router.push({name:'sights'})">
@@ -79,7 +77,7 @@ export default {
   .j-container{
     position: absolute;
     width: 100%;
-    top: 95px;
+    top: 90px;
     bottom: 0;
     padding: 10px 0;
     background-color: #f7f7f7;

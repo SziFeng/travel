@@ -1,13 +1,10 @@
 <template>
 <div>
-  <div class=" myflex1 titleSeach">
-    <div class="address myflex3">
-      <svg class="icon" aria-hidden="true"><use xlink:href="#icon-location2"></use></svg>
-      <span>广东</span>
-    </div>
-    <div class="t-input"><f-input :showIcon="false" backgroundColor="#f7f7f7" radius="10" size="small" placeholder="你想去哪玩？"></f-input></div>
-    <div class="lin myflex3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-lingdang"></use></svg></div>
-  </div>
+  <van-search
+    shape="round"
+    placeholder="请输入搜索关键词"
+  >
+  </van-search>
   <f-swipe :list="imgList" :autoplay="false"></f-swipe>
   <div class="mygrid4 title-cont">
     <div v-for="(item,index) in titleList" :key="index" @click="$router.push({name:item.path})">
@@ -19,17 +16,18 @@
       <div class="cell2">{{item.name}}</div>
     </div>
   </div>
-  <div class="myflex2 name-bar">
+  <!-- <div class="myflex2 name-bar">
     <div style="font-weight:550">热门推荐</div>
     <div class="myflex2 more">换一组<svg class="icon rightIcon" aria-hidden="true"><use xlink:href="#icon-shuaxin2"></use></svg></div>
-  </div>
-  <div class="mygrid3 bar-cont">
+  </div> -->
+  <!-- <div class="mygrid3 bar-cont">
     <div v-for="(item,index) in barList" :key="index" >
       <div class="cell1"><img :src="item.img" alt=""></div>
       <div class="cell2">{{item.name}}</div>
       <div class="cell3">{{item.details}}</div>
     </div>
-  </div>
+  </div> -->
+  <van-sticky>
   <div class="myflex2 name-bar">
     <div style="font-weight:550">精选游记</div>
     <div class="myflex2">
@@ -39,13 +37,14 @@
         radius="100"
         :text="item.name"
         size="small"
-        :backgroundColor="type1===ind?'#000000':'#CCCCCC'"
+        :backgroundColor="type1===ind?'#1296db':'#aaaaaa'"
         @click="type1=ind"
         style="padding:0 5px"></f-button>
     </div>
   </div>
+  </van-sticky>
   <div class="item-card">
-    <div class="card" v-for="(item,index) in 5" :key="index">
+    <div class="card" v-for="(item,index) in 5" :key="index" @click="$router.push({name:'passage'})">
       <div class="item1"><img src="../../assets/image/img3.png" alt=""></div>
       <div class="myflex2 item2">
         <div class="left">
@@ -74,19 +73,19 @@ export default {
   data () {
     return {
       titleList: [
-        // { name: '景点', icon: 'icon-jingdian1', path: '' },
-        { name: '游记', icon: 'icon-youji1', path: 'diary' },
+        { name: '景点', icon: 'icon-jingdian1', path: 'destination' },
+        // { name: '游记', icon: 'icon-youji1', path: 'destination' },
         // { name: '美食', icon: 'icon-zhaomeishi-', path: '' },
-        { name: '导览', icon: 'icon-jingqudaolan1', path: '' },
+        { name: '导览', icon: 'icon-jingqudaolan1', path: 'sightsInfo' },
         // { name: '目的地', icon: 'icon-mudediguojia', path: '' },
         // { name: '卫生间', icon: 'icon-gonggongcesuo', path: '' },
         { name: '翻译', icon: 'icon-fanyi', path: '' },
         { name: '识花草', icon: 'icon-paizhaoshibie', path: '' }
       ],
       barList: [
-        { name: '海边', details: '风景优美，身临其境', path: '', img: require('../../assets/image/img1.png') },
-        { name: '校园风光', details: '风景优美，身临其境', path: '', img: require('../../assets/image/img2.png') },
-        { name: '绿岛', details: '风景优美，身临其境', path: '', img: require('../../assets/image/img4.png') }
+        { name: '海边', details: '风景优美，身临其境', path: 'passage', img: require('../../assets/image/img1.png') },
+        { name: '校园风光', details: '风景优美，身临其境', path: 'passage', img: require('../../assets/image/img2.png') },
+        { name: '绿岛', details: '风景优美，身临其境', path: 'passage', img: require('../../assets/image/img4.png') }
       ],
       buttonList: [
         { name: '最新' },
@@ -135,7 +134,8 @@ export default {
 }
 .name-bar{
   font-size: 18px;
-  padding: 10px;
+  padding:15px 10px 10px;
+  background-color: #fff;
   .more{
     font-size: 16px;
     color:#777777;
@@ -179,7 +179,7 @@ export default {
   }
 }
 .card{
-  margin:15px 10px;
+  margin:5px 10px 15px;
   box-shadow: 1px 0 5px #aaaaaa;
   border-radius: 15px;
   .item1{

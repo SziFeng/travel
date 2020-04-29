@@ -57,10 +57,21 @@ fetch.install = (Vue, options) => {
         })
     })
   }
+
+  Vue.$from = (url, params) => {
+    return new Promise((resolve, reject) => {
+      axios.post(url, params, { headers: { 'Content-Type': 'multipart/form-data' } })
+        .then(response => {
+          resolve(response.data)
+        }).catch((error) => {
+          reject(error)
+        })
+    })
+  }
   // put请求(Request Payload)
   Vue.$put = (url, params) => {
     return new Promise((resolve, reject) => {
-      axios.put(url, params)
+      axios.put(url, params, { headers: { 'Content-Type': 'application/json' } })
         .then(response => {
           resolve(response.data)
         })
