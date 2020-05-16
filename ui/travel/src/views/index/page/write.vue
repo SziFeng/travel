@@ -22,6 +22,11 @@
         </svg>
       </template>
     </van-cell>
+    <van-dialog v-model="show" title="文章标题" @confirm="sendData" show-cancel-button>
+      <div class="title-inp">
+        <input type="text" v-model="paramsData.title" placeholder="请输入对应名字">
+      </div>
+    </van-dialog>
   </div>
 </template>
 
@@ -32,12 +37,13 @@ export default {
   data () {
     return {
       fileList: [],
+      show: false,
       list: [
         { name: '所在地点', icon: 'icon-location2', path: '', fun: 'getAddress' },
         { name: '添加标签', icon: 'icon-weitianjiabiaoqian', path: '' }
       ],
       paramsData: {
-        title: 'dd',
+        title: '',
         content: '',
         location: 'aa',
         tags: 'sd',
@@ -52,27 +58,34 @@ export default {
     ...mapMutations(['setAddress']),
     send () {
       console.log('paramsData', this.paramsData)
-      this.getImg()
+      this.addEssay()
     },
     getAddress () {
       this.$router.push({ name: 'sightsInfo' })
       console.log('getAddress')
     },
-    getImg () {
+    addEssay () {
       // console.log('data', new FormData())
-      let data = new FormData()
-      data.append('file1', this.fileList[0].file)
-      data.append('file2', this.fileList[1].file)
-      data.append('file3', this.fileList[2].file)
-      data.append('title', this.paramsData.title)
-      data.append('content', this.paramsData.content)
-      data.append('location', this.paramsData.location)
-      data.append('tags', this.paramsData.tags)
-      this.$api.getImg(data).then(res => {
-        if (res.data) {
-          console.log('sss')
-        }
-      })
+      this.show = true
+    },
+    sendData () {
+      if (this.fileList.length < 3 && this.paramsData.content !== '') {
+        this.$toast.fail('内容不能为空')
+      } else {
+        let data = new FormData()
+        data.append('file1', this.fileList[0].file)
+        data.append('file2', this.fileList[1].file)
+        data.append('file3', this.fileList[2].file)
+        data.append('title', this.paramsData.title)
+        data.append('content', this.paramsData.content)
+        data.append('location', this.paramsData.location)
+        data.append('tags', this.paramsData.tags)
+        this.$api.addEssay(data).then(res => {
+          if (res.data) {
+            this.$toast.success('发布成功')
+          }
+        })
+      }
     }
   },
   mounted () {
@@ -108,6 +121,16 @@ export default {
   }
   .img{
       padding: 10px;
+  }
+  .title-inp{
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    input{
+      border: 1px solid #666666;
+      border-radius: 10px;
+      padding: 5px;
+    }
   }
 }
 </style>

@@ -47,8 +47,10 @@ export default {
   },
   methods: {
     login () {
+      this.$toast.loading('登录中')
       this.$api.login({ username: this.username, password: this.password }).then(res => {
         if (res.data) {
+          this.$toast.success('登录成功')
           this.$router.push({ name: 'home' })
         }
       })

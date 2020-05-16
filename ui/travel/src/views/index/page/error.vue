@@ -1,10 +1,18 @@
 <template>
-  <div>error</div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: 'error'
+  name: '',
+  data(){
+    return{
+
+    }
+  },
+  methods{
+
+  }
 }
 </script>
 

@@ -7,7 +7,10 @@ export default {
   getUserInfo (p) {
     return Vue.$get('/travel/api/user/getCurrentUser', p)
   },
-  getImg (p) {
+  addEssay (p) {
     return Vue.$from('/travel/api/essay/addEssay', p)
+  },
+  getEssay (p) {
+    return Vue.$from('/travel/api/essay/all', p)
   }
 }
